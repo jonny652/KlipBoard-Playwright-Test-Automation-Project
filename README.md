@@ -49,6 +49,7 @@ Other useful scripts:
 | `npm run test:debug`   | Run tests in debug mode            |
 | `npm run test:ui`      | Run tests in Playwright's UI mode  |
 | `npm run test:accessibility` | Run only the accessibility spec |
+| `npm run test:api`     | Run only the API-level spec        |
 | `npm run report`       | Open the last HTML test report     |
 | `npm run allure:generate` | Build the Allure HTML report from the latest run |
 | `npm run allure:open`  | Open the last built Allure report  |
@@ -60,6 +61,10 @@ Tests run against **Chromium** and **Firefox**. WebKit is currently disabled —
 ## Accessibility testing
 
 `tests/accessibility.spec.ts` runs an axe-core scan against every page in `test-data/home.json` and writes an HTML report to `accessibility-reports/` per page. These tests always pass — they're informational for now, publishing a baseline for a human to review rather than failing the build on any violation.
+
+## API testing
+
+`tests/api.spec.ts` checks `test-data/api-endpoints.json`'s endpoints directly over HTTP (status code, content-type, body content) — no browser page involved. KlipBoard doesn't expose a first-party JSON API to test against, so this covers the genuinely public endpoints it does serve (homepage, `robots.txt`, `sitemap.xml`).
 
 ## Allure reporting
 

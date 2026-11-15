@@ -1,0 +1,5 @@
+[
+  { "path": "/", "expectedStatus": 200, "contentType": "text/html" },
+  { "path": "/robots.txt", "expectedStatus": 200, "contentType": "text/plain", "bodyContains": "Sitemap:" },
+  { "path": "/sitemap.xml", "expectedStatus": 200, "contentType": "xml", "bodyContains": "<urlset" }
+]

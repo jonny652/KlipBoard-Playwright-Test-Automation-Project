@@ -23,6 +23,6 @@ export class KlipboardHomepage extends BasePage {
   }
 
   async gotoHomepage() {
-    await this.page.goto(this.url);
+    return this.page.goto(this.url);
   }
 }
