@@ -19,7 +19,7 @@ End-to-end tests for the [KlipBoard](https://www.klipboard.com) website, built w
 
 This framework applies learnings from previous Playwright projects, built around a **data-driven test structure**: test data lives in plain JSON files, page objects are built from that data, and specs loop over the data to generate their checks. Adding a new row of data adds new coverage with little to no code change.
 
-This project was built with the assistance of **Claude AI (Pro)** and is intended as a demonstration of test automation practice for a job application with KlipBoard.
+This project was built with the assistance of **Claude AI (Pro)** and is intended as a demonstration of test automation practice.
 
 **Test designer:** Jonathan Ruddick
 
