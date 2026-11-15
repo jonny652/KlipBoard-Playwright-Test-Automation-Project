@@ -1,0 +1,14 @@
+{
+  // TypeScript config for the test project. resolveJsonModule lets specs
+  // import test-data/*.json files directly.
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "types": ["node"],
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
