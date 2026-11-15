@@ -16,3 +16,14 @@ One row per page to verify. Fields:
 Only `url` is required — every other field is optional, and the matching
 assertion in the spec is only registered when that field is present. This
 means new rows can be added with partial data without breaking the suite.
+
+## api-endpoints.json
+
+One row per endpoint to check via HTTP (no browser page involved — see `tests/api.spec.ts`). Fields:
+
+| Field            | Required | Description                                              |
+|------------------|----------|-----------------------------------------------------------|
+| `path`           | Yes      | Path requested against the configured `baseURL`.          |
+| `expectedStatus` | Yes      | Expected HTTP status code.                                |
+| `contentType`    | No       | Substring expected in the `content-type` response header. Omit to skip. |
+| `bodyContains`   | No       | Substring expected in the response body. Omit to skip.    |

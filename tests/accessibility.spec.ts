@@ -5,11 +5,15 @@ import homeData from '../test-data/home.json';
 import { generateAccessibilityReport } from '../utility/accessibility';
 import { HomePageData } from '../pages/klipboard-homepage';
 
+// Turns a URL into a safe report filename, e.g.
+// "https://www.klipboard.com" -> "www-klipboard-com".
 function slugify(url: string): string {
   return url.replace(/^https?:\/\//, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
 }
 
 for (const row of homeData as HomePageData[]) {
+  // Scans the page with axe and writes an HTML report; see utility/accessibility.ts
+  // for why this never fails the test.
   test(`accessibility scan: ${row.url}`, async ({ page }) => {
     test.slow(); // axe scans routinely take longer than the default test timeout
     await page.goto(row.url);

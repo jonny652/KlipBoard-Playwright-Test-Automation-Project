@@ -1,0 +1,62 @@
+<svg viewBox="0 0 880 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram comparing the two request paths inside api.spec.ts: real HTTP calls versus browser requests intercepted with page.route()">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="500" fill="#ffffff"/>
+
+  <text x="220" y="20" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">① Real HTTP — no browser</text>
+  <text x="650" y="20" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">② Through the browser — intercepted</text>
+
+  <!-- Column A -->
+  <rect x="40" y="40" width="360" height="60" rx="8" fill="#fef6d8" stroke="#d4b106" stroke-width="1.5"/>
+  <text x="220" y="65" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">api-endpoints.json</text>
+  <text x="220" y="84" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">+ home.json (url only)</text>
+
+  <line x1="220" y1="100" x2="220" y2="133" stroke="#333" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="40" y="135" width="360" height="60" rx="8" fill="#e6f4ff" stroke="#1677ff" stroke-width="1.5"/>
+  <text x="220" y="160" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">request fixture (APIRequestContext)</text>
+  <text x="220" y="179" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">GET /, /robots.txt, /sitemap.xml</text>
+
+  <line x1="220" y1="195" x2="220" y2="228" stroke="#333" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="40" y="230" width="360" height="60" rx="8" fill="#fff0f0" stroke="#f5222d" stroke-width="1.5"/>
+  <text x="220" y="265" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">🌐 real HTTP call → Live KlipBoard site</text>
+
+  <line x1="220" y1="290" x2="220" y2="323" stroke="#333" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="40" y="325" width="360" height="70" rx="8" fill="#f0f9e8" stroke="#52c41a" stroke-width="1.5"/>
+  <text x="220" y="350" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">assert: status code, content-type,</text>
+  <text x="220" y="369" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">body text, response time</text>
+  <text x="220" y="387" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#777">(is the real site behaving right now?)</text>
+
+  <!-- Column B -->
+  <rect x="460" y="40" width="380" height="60" rx="8" fill="#fef6d8" stroke="#d4b106" stroke-width="1.5"/>
+  <text x="650" y="75" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">home.json (url + heading)</text>
+
+  <line x1="650" y1="100" x2="650" y2="133" stroke="#333" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="460" y="135" width="380" height="60" rx="8" fill="#e6f4ff" stroke="#1677ff" stroke-width="1.5"/>
+  <text x="650" y="160" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">homepage fixture → page.route()</text>
+  <text x="650" y="179" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">intercepts the request before it's answered</text>
+
+  <line x1="650" y1="195" x2="650" y2="228" stroke="#333" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="460" y="230" width="380" height="130" rx="8" fill="#fff0f0" stroke="#f5222d" stroke-width="1.5"/>
+  <text x="650" y="251" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="bold" fill="#333">4 simulated outcomes:</text>
+  <text x="650" y="272" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">⏱ slow — delayed, then the real response</text>
+  <text x="650" y="292" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">🎭 dropped — aborted, site never reached</text>
+  <text x="650" y="312" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">🎭 500 error — faked, site never reached</text>
+  <text x="650" y="332" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">🎭 wrong content — faked, site never reached</text>
+  <text x="650" y="352" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#777">3 of 4 never contact the real site at all</text>
+
+  <line x1="650" y1="360" x2="650" y2="393" stroke="#333" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <rect x="460" y="395" width="380" height="70" rx="8" fill="#f0f9e8" stroke="#52c41a" stroke-width="1.5"/>
+  <text x="650" y="420" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">assert: the page still works, or the</text>
+  <text x="650" y="439" text-anchor="middle" font-family="sans-serif" font-size="12.5" fill="#333">failure is correctly detected</text>
+  <text x="650" y="457" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#777">(would our tests notice if it misbehaved?)</text>
+</svg>
